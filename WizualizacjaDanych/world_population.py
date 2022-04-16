@@ -1,6 +1,7 @@
 import json
 from country_codes import get_country_code
 from pygal.maps.world import World
+from pygal.style import RotateStyle
 
 # Wczytanie danych i umieszczenie ich na liście
 filename = 'population_data.json'
@@ -18,15 +19,16 @@ for pop_dict in pop_data:
             cc_populations[code] = population
 cc_pops_1, cc_pops_2, cc_pops_3 = {}, {}, {}
 for cc, pop in cc_populations.items():
-    if pop < 10000000:
+    if pop <= 10000000:
         cc_pops_1[cc] = pop
-    elif pop > 10000000:
+    elif pop < 1000000000:
         cc_pops_2[cc] = pop
-    else:
+    elif pop >= 1000000000:
         cc_pops_3[cc] = pop
 print(len(cc_pops_1), len(cc_pops_2), len(cc_pops_3))
 
-wm = World()
+wm_style = RotateStyle('#00ff00')
+wm = World(style=wm_style)
 wm.force_uri_protocol = 'https'
 wm.title = 'Populacja na świecie w 2010 roku (dane dla poszczególnych państw)'
 wm.add("0- 10mln", cc_pops_1)
