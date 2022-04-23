@@ -30,7 +30,7 @@ def run_game():
     # Utworzenie grupy przeznaczonej do przechowywania pocisków
     bullets = Group()
 
-#Rozpoczęcie pętli głównej
+# Rozpoczęcie pętli głównej
     while True:
         gf.check_events(ai_settings, screen, ship, aliens, bullets, stats, play_button, sb)
         if stats.game_active:

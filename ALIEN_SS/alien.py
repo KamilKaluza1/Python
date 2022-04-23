@@ -2,6 +2,7 @@ import pygame
 
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """Klasa przedstawiająca jednego kosmite w flocie"""
     def __init__(self, ai_settings, screen):
